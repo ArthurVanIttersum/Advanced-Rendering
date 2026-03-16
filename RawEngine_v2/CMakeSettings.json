@@ -18,7 +18,7 @@
                 },
                 {
                     "name": "CMAKE_INSTALL_PREFIX",
-                    "value": "C:/Users/ajcva/dev/RawEngine_v2/out/install/x64-Debug",
+                    "value": "C:/Users/ajcva/dev/AdvancedRendering/Advanced-Rendering/RawEngine_v2/out/install/x64-Debug",
                     "type": "PATH"
                 }
             ]
