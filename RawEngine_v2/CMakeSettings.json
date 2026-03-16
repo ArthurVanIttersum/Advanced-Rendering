@@ -7,6 +7,7 @@
             "inheritEnvironments": [ "msvc_x64_x64" ],
             "buildRoot": "${projectDir}\\out\\build\\${name}",
             "installRoot": "${projectDir}\\out\\install\\${name}",
+            "cmakeToolchain": "vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cmakeCommandArgs": "",
             "buildCommandArgs": "",
             "ctestCommandArgs": "",
@@ -15,11 +16,6 @@
                     "name": "VCPKG_TARGET_TRIPLET",
                     "value": "x64-windows",
                     "type": "STRING"
-                },
-                {
-                    "name": "CMAKE_INSTALL_PREFIX",
-                    "value": "C:/Users/ajcva/dev/AdvancedRendering/Advanced-Rendering/RawEngine_v2/out/install/x64-Debug",
-                    "type": "PATH"
                 }
             ]
         }

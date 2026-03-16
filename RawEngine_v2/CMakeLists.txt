@@ -4,6 +4,9 @@ project(RawEngine)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Zi")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /Zi")
+
 include_directories(imgui imgui/backends)
 
 # Add source files for ImGui
@@ -30,8 +33,20 @@ add_executable(RawEngine main.cpp
         core/model.h
         core/Camera.h
         core/Camera.cpp
+        core/Light.cpp
+        core/Light.h
+        core/material.cpp
+        core/material.h
+        core/GameObject.cpp
+        core/GameObject.h
+        core/PostProcessStep.h
+        core/PostPrecessStep.cpp
+        core/FrameBuffer.h
+        core/FrameBuffer.cpp
+        core/ShaderProgram.h
+        core/ShaderProgram.cpp
+)
         
- "core/Light.cpp" "core/Light.h" "core/material.cpp" "core/material.h" "core/GameObject.cpp" "core/GameObject.h" "core/PostProcessStep.h" "core/PostPrecessStep.cpp" "core/FrameBuffer.h" "core/FrameBuffer.cpp" "core/ShaderProgram.h" "core/ShaderProgram.cpp")
 
 add_custom_command(
         TARGET RawEngine PRE_BUILD

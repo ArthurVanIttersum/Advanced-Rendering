@@ -141,6 +141,7 @@ int main() {
     const GLuint postProcessingFragmentGrayScale = generateShader("shaders/postProcessGrayScale.fs", GL_FRAGMENT_SHADER);
     const GLuint postProcessingFragmentEdgeDetect = generateShader("shaders/postProcessEdgeDetect.fs", GL_FRAGMENT_SHADER);
     const GLuint postProcessingFragmentBlur = generateShader("shaders/postProcessBlur.fs", GL_FRAGMENT_SHADER);
+    const GLuint tileMapShader = generateShader("shaders/tilemap.fs", GL_FRAGMENT_SHADER);
 
 
     //make shader programs
@@ -151,6 +152,7 @@ int main() {
     std::shared_ptr<core::ShaderProgram> postProcessingShaderProgramGrayScale = std::make_shared<core::ShaderProgram>(postProcessingVertexShader, postProcessingFragmentGrayScale);
     std::shared_ptr<core::ShaderProgram> postProcessingShaderProgramEdgeDetect = std::make_shared<core::ShaderProgram>(postProcessingVertexShader, postProcessingFragmentEdgeDetect);
     std::shared_ptr<core::ShaderProgram> postProcessingShaderProgramBlur = std::make_shared<core::ShaderProgram>(postProcessingVertexShader, postProcessingFragmentBlur);
+    std::shared_ptr<core::ShaderProgram> tileMapShaderProgram = std::make_shared<core::ShaderProgram>(modelVertexShader, tileMapShader);
 
     //delete shaders
     glDeleteShader(modelVertexShader);
@@ -161,6 +163,7 @@ int main() {
     glDeleteShader(postProcessingFragmentGrayScale);
     glDeleteShader(postProcessingFragmentEdgeDetect);
     glDeleteShader(postProcessingFragmentBlur);
+    glDeleteShader(tileMapShader);
 
     // IMGUI variables:
     float ambientIntensity = 0.1f;
@@ -177,6 +180,7 @@ int main() {
     std::shared_ptr<core::Material> basicMaterial = std::make_shared<core::Material>(modelShaderProgram, mainCamera, firstLight, 40, ambientColor, &ambientIntensity, glm::vec4(1, 0.4, 1, 1));
     std::shared_ptr<core::Material> modifiedBasicMaterial = std::make_shared<core::Material>(modelShaderProgram, mainCamera, firstLight, 8, ambientColor, &ambientIntensity, glm::vec4(0.4, 1, 1, 1));
     std::shared_ptr<core::Material> textureMaterial = std::make_shared<core::Material>(textureShaderProgram, mainCamera, cmgtGatoTexture);
+    std::shared_ptr<core::Material> tileMapMaterial = std::make_shared<core::Material>(tileMapShaderProgram, mainCamera, cmgtGatoTexture, true);
 
     //models
 
@@ -199,16 +203,12 @@ int main() {
     std::vector<std::vector<std::unique_ptr<core::GameObject>>*> scenes;
     //scene1
     std::vector<std::unique_ptr<core::GameObject>> scene1;
-    scenes.push_back(&scene1);
+    scenes.push_back(&scene1);//tilemapScene
 
-    scene1.push_back(std::make_unique<core::GameObject>(suzanneShared, basicMaterial));
-    scene1.push_back(std::make_unique<core::GameObject>(suzanneShared, modifiedBasicMaterial));
-    scene1.push_back(std::make_unique<core::GameObject>(quadModelShared, textureMaterial));
+    scene1.push_back(std::make_unique<core::GameObject>(quadModelShared, tileMapMaterial));
 
-
-    scene1[1]->translate(glm::vec3(2, 0, 0));
-    scene1[2]->translate(glm::vec3(0, 0, -2.5));
-    scene1[2]->scale(glm::vec3(5, 5, 1));
+    
+    
 
     //scene2
     std::vector<std::unique_ptr<core::GameObject>> scene2;
@@ -286,8 +286,8 @@ int main() {
 
 
         //scene stuff
-        scene1[0]->rotate(glm::vec3(0.0f, -1.0f, 0.0f), glm::radians(rotationStrength) * static_cast<float>(deltaTime));
-        scene1[1]->rotate(glm::vec3(0.0f, -1.0f, 0.0f), glm::radians(rotationStrength) * static_cast<float>(deltaTime));
+        //scene1[0]->rotate(glm::vec3(0.0f, -1.0f, 0.0f), glm::radians(rotationStrength) * static_cast<float>(deltaTime));
+        //scene1[1]->rotate(glm::vec3(0.0f, -1.0f, 0.0f), glm::radians(rotationStrength) * static_cast<float>(deltaTime));
 
         frameBuffers[0]->SetCurrentBuffer();//render to buffer1
 
