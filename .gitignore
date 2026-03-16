@@ -1,0 +1,83 @@
+# Build output directories
+/out/
+build/
+bin/
+lib/
+cmake-build-*/
+Debug/
+Release/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+Makefile
+compile_commands.json
+
+# Object files and binaries
+*.o
+*.obj
+*.lo
+*.la
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Editor and IDE
+.idea/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln
+*.vcxproj*
+*.vcxproj.user
+
+# Temporary and backup files
+*~
+*.swp
+*.tmp
+*.temp
+*.bak
+
+# Logs and runtime files
+*.log
+*.pid
+*.seed
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Shader binaries and intermediate shader outputs
+*.spv
+*.bin
+
+# Textures or large generated assets (uncomment if you generate them locally)
+# /textures/generated/
+# /textures/*.ktx
+
+# Coverage, profiling, sanitizer outputs
+coverage/
+*.gcda
+*.gcno
+*.profraw
+*.profdata
+
+# Core dumps
+core
+core.*
+
+# Package manager / dependency caches
+.vcpkg/
+.vcpkg_installed/
+conanbuildinfo.txt
+conaninfo.txt
+
+# Misc
+*.ide.*
