@@ -132,6 +132,8 @@ int main() {
     std::shared_ptr<core::Light> firstLight = std::make_shared<core::Light>(glm::vec3(1, 1, 1), glm::vec3(1, 1, 1), glm::vec4(1, 1, 1, 1), core::pointLight);
     std::shared_ptr<core::Texture> cmgtGatoTexture = std::make_shared<core::Texture>("textures/CMGaTo_crop.png");
     std::shared_ptr<core::Texture> tileSetTexture = std::make_shared<core::Texture>("textures/Tiles_32x32.png");
+    std::shared_ptr<core::Texture> tileMapTexture = std::make_shared<core::Texture>(4, 4, true);
+    
 
     //make shaders
     const GLuint modelVertexShader = generateShader("shaders/modelVertex.vs", GL_VERTEX_SHADER);
@@ -181,7 +183,7 @@ int main() {
     std::shared_ptr<core::Material> basicMaterial = std::make_shared<core::Material>(modelShaderProgram, mainCamera, firstLight, 40, ambientColor, &ambientIntensity, glm::vec4(1, 0.4, 1, 1));
     std::shared_ptr<core::Material> modifiedBasicMaterial = std::make_shared<core::Material>(modelShaderProgram, mainCamera, firstLight, 8, ambientColor, &ambientIntensity, glm::vec4(0.4, 1, 1, 1));
     std::shared_ptr<core::Material> textureMaterial = std::make_shared<core::Material>(textureShaderProgram, mainCamera, cmgtGatoTexture);
-    std::shared_ptr<core::Material> tileMapMaterial = std::make_shared<core::Material>(tileMapShaderProgram, mainCamera, tileSetTexture, true);
+    std::shared_ptr<core::Material> tileMapMaterial = std::make_shared<core::Material>(tileMapShaderProgram, mainCamera, tileSetTexture, tileMapTexture);
 
     //models
 
