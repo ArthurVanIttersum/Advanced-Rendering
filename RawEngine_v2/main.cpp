@@ -131,6 +131,7 @@ int main() {
     std::shared_ptr<core::Camera> mainCamera = std::make_shared<core::Camera>(glm::vec2(static_cast<float>(g_width), static_cast<float>(g_height)));
     std::shared_ptr<core::Light> firstLight = std::make_shared<core::Light>(glm::vec3(1, 1, 1), glm::vec3(1, 1, 1), glm::vec4(1, 1, 1, 1), core::pointLight);
     std::shared_ptr<core::Texture> cmgtGatoTexture = std::make_shared<core::Texture>("textures/CMGaTo_crop.png");
+    std::shared_ptr<core::Texture> tileSetTexture = std::make_shared<core::Texture>("textures/Tiles_32x32.png");
 
     //make shaders
     const GLuint modelVertexShader = generateShader("shaders/modelVertex.vs", GL_VERTEX_SHADER);
@@ -180,7 +181,7 @@ int main() {
     std::shared_ptr<core::Material> basicMaterial = std::make_shared<core::Material>(modelShaderProgram, mainCamera, firstLight, 40, ambientColor, &ambientIntensity, glm::vec4(1, 0.4, 1, 1));
     std::shared_ptr<core::Material> modifiedBasicMaterial = std::make_shared<core::Material>(modelShaderProgram, mainCamera, firstLight, 8, ambientColor, &ambientIntensity, glm::vec4(0.4, 1, 1, 1));
     std::shared_ptr<core::Material> textureMaterial = std::make_shared<core::Material>(textureShaderProgram, mainCamera, cmgtGatoTexture);
-    std::shared_ptr<core::Material> tileMapMaterial = std::make_shared<core::Material>(tileMapShaderProgram, mainCamera, cmgtGatoTexture, true);
+    std::shared_ptr<core::Material> tileMapMaterial = std::make_shared<core::Material>(tileMapShaderProgram, mainCamera, tileSetTexture, true);
 
     //models
 
@@ -283,11 +284,6 @@ int main() {
             mainCamera->UpdateScreenSize(glm::vec2(static_cast<float>(g_width), static_cast<float>(g_height)));
             sizeChanged = false;
         }
-
-
-        //scene stuff
-        //scene1[0]->rotate(glm::vec3(0.0f, -1.0f, 0.0f), glm::radians(rotationStrength) * static_cast<float>(deltaTime));
-        //scene1[1]->rotate(glm::vec3(0.0f, -1.0f, 0.0f), glm::radians(rotationStrength) * static_cast<float>(deltaTime));
 
         frameBuffers[0]->SetCurrentBuffer();//render to buffer1
 
