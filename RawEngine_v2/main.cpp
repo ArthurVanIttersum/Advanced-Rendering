@@ -132,6 +132,7 @@ int main() {
     std::shared_ptr<core::Light> firstLight = std::make_shared<core::Light>(glm::vec3(1, 1, 1), glm::vec3(1, 1, 1), glm::vec4(1, 1, 1, 1), core::pointLight);
     std::shared_ptr<core::Texture> cmgtGatoTexture = std::make_shared<core::Texture>("textures/CMGaTo_crop.png");
     std::shared_ptr<core::Texture> tileSetTexture = std::make_shared<core::Texture>("textures/Tiles_32x32.png");
+    tileSetTexture->SetFiltering();
     std::shared_ptr<core::Texture> tileMapTexture = std::make_shared<core::Texture>(4, 4, true);
     
 
