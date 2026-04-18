@@ -45,7 +45,7 @@ add_executable(RawEngine main.cpp
         core/FrameBuffer.cpp
         core/ShaderProgram.h
         core/ShaderProgram.cpp
-)
+ "core/TilemapLoader.h" "core/TilemapLoader.cpp")
         
 
 add_custom_command(
@@ -65,6 +65,13 @@ add_custom_command(
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/textures/
         ${CMAKE_CURRENT_BINARY_DIR}/textures/)
+
+add_custom_command(
+    TARGET RawEngine PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/tiled/
+    ${CMAKE_CURRENT_BINARY_DIR}/tiled/
+)
 
 add_custom_target(copy_shaders ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -86,3 +93,5 @@ find_package(assimp CONFIG REQUIRED)
 target_link_libraries(RawEngine PRIVATE assimp::assimp)
 find_package(Stb REQUIRED)
 target_include_directories(RawEngine PRIVATE ${Stb_INCLUDE_DIR})
+find_package(tinyxml2 CONFIG REQUIRED)
+target_link_libraries(RawEngine PRIVATE tinyxml2::tinyxml2)

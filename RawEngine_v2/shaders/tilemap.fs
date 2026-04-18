@@ -18,12 +18,11 @@ void main()
     //tilemap index
     ivec2 mapSize = textureSize(tileMapTexture, 0);
     ivec2 mapSample = ivec2(flippedUV * vec2(mapSize));
-    uint tileIndex = texelFetch(tileMapTexture, mapSample, 0).r;
+    uint tileIndex = texelFetch(tileMapTexture, mapSample, 0).r - 1;
 
     //tilesetOffset
     ivec2 offsetInt = ivec2(mod(tileIndex, tileSetSize.x), tileIndex / tileSetSize.y);
-
-
+    
     //uv coordinate
     
     vec2 normalize = mod(flippedUV * mapSize, vec2(1,1));
@@ -31,5 +30,5 @@ void main()
     vec2 place = (normalize + offsetInt) / tileSetSize;
 
     FragColor = texture(tileSetTexture, place);
-
+    if (tileIndex == -1u) FragColor = vec4(0,0,0,0);
 }

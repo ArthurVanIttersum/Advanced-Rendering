@@ -1,0 +1,39 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Advanced rendering.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "Alle Bestanden (*)",
+    "fileStates": {
+        "Advanced rendering.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 370.75,
+                "y": 238.25
+            }
+        },
+        "AdvancedRendering.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 5.5
+        }
+    },
+    "last.imagePath": "C:/Users/ajcva/dev/AdvancedRendering/Advanced-Rendering/RawEngine_v2/textures",
+    "map.height": 100,
+    "map.lastUsedFormat": "tmx",
+    "map.renderOrder": null,
+    "map.width": 100,
+    "openFiles": [
+        "Advanced rendering.tmx",
+        "AdvancedRendering.tsx"
+    ],
+    "project": "AdvancedRendering.tiled-project",
+    "recentFiles": [
+        "AdvancedRendering.tsx",
+        "Advanced rendering.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
