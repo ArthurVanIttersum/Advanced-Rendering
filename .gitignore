@@ -70,7 +70,6 @@ coverage/
 *.profdata
 
 # Core dumps
-core
 core.*
 
 # Package manager / dependency caches
